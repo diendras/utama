@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+
+
+    <title>READ JSON (AJAX)</title>
+
+
+    <!-- Bootstrap is included in its original form, unaltered -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Related styles of various icon packs and plugins -->
+    <link rel="stylesheet" href="css/plugins.css">
+
+    <!-- The main stylesheet of this template. All Bootstrap overwrites are defined in here -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Include a specific file here from css/themes/ folder to alter the default theme of the template -->
+
+    <!-- The themes stylesheet of this template (for using specific theme color in individual elements - must included last) -->
+    <link rel="stylesheet" href="css/themes.css">
+    <!-- END Stylesheets -->
+
+    <!-- Modernizr (browser feature detection library) & Respond.js (Enable responsive CSS code on browsers that don't support it, eg IE8) -->
+    <script src="js/vendor/modernizr-2.7.1-respond-1.4.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="js/geturi.js"></script>
+
+</head>
+
+<body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var url = "http://pkl.notaxcloth.com/restandro/json_produk.php";
+            $.getJSON(url, function (result) {
+                console.log(result);
+                $.each(result, function (i, field) {
+
+                    var id_produk = field.id_produk;
+                    var nama_produk = field.nama_produk;
+                    var jenis = field.jenis;
+                    var harga = field.harga;
+                    var stock = field.stock;
+                    var keterangan = field.keterangan;
+
+                    $("#output").append("<a class='item' href='form.html?id_produk=" +
+                        id_produk +
+                        "&nama_produk=" + nama_produk + "&jenis=" + jenis + "&harga=" +
+                        harga + "&stock=" + stock + "&keterangan=" +
+                        keterangan + "'> <span class='item-note'> <b>id :</b> " +
+                        id_produk + "</span></a>, <b> nama produk :</b> " + nama_produk +
+                        ",<b> jenis :</b> " +
+                        jenis + ", <b>harga : </b>" +
+                        harga + ",<b> stock : </b>" +
+                        stock + ",<b> keterangan :</b> " +
+                        keterangan + "<br/>");
+                });
+            });
+        });
+    </script>
+    <!-- Preloader -->
+    <!-- Preloader functionality (initialized in js/app.js) - pageLoading() -->
+    <!-- Used only if page preloader is enabled from inc/config (PHP version) or the class 'page-loading' is added in body element (HTML version) -->
+    <div class="preloader themed-background">
+        <h1 class="push-top-bottom text-light text-center"><strong>Pro</strong>UI</h1>
+        <div class="inner">
+            <h3 class="text-light visible-lt-ie9 visible-lt-ie10"><strong>Loading..</strong></h3>
+            <div class="preloader-spinner hidden-lt-ie9 hidden-lt-ie10"></div>
+        </div>
+    </div>
+    <!-- END Preloader -->
+
+    <!-- Page Container -->
+    <!-- In the PHP version you can set the following options from inc/config file -->
+    <!--
+            Available #page-container classes:
+
+            '' (None)                                       for a full main and alternative sidebar hidden by default (> 991px)
+
+            'sidebar-visible-lg'                            for a full main sidebar visible by default (> 991px)
+            'sidebar-partial'                               for a partial main sidebar which opens on mouse hover, hidden by default (> 991px)
+            'sidebar-partial sidebar-visible-lg'            for a partial main sidebar which opens on mouse hover, visible by default (> 991px)
+
+            'sidebar-alt-visible-lg'                        for a full alternative sidebar visible by default (> 991px)
+            'sidebar-alt-partial'                           for a partial alternative sidebar which opens on mouse hover, hidden by default (> 991px)
+            'sidebar-alt-partial sidebar-alt-visible-lg'    for a partial alternative sidebar which opens on mouse hover, visible by default (> 991px)
+
+            'sidebar-partial sidebar-alt-partial'           for both sidebars partial which open on mouse hover, hidden by default (> 991px)
+
+            'sidebar-no-animations'                         add this as extra for disabling sidebar animations on large screens (> 991px) - Better performance with heavy pages!
+
+            'style-alt'                                     for an alternative main style (without it: the default style)
+            'footer-fixed'                                  for a fixed footer (without it: a static footer)
+
+            'disable-menu-autoscroll'                       add this to disable the main menu auto scrolling when opening a submenu
+
+            'header-fixed-top'                              has to be added only if the class 'navbar-fixed-top' was added on header.navbar
+            'header-fixed-bottom'                           has to be added only if the class 'navbar-fixed-bottom' was added on header.navbar
+        -->
+    <div id="page-container" class="sidebar-partial sidebar-visible-lg sidebar-no-animations">
+        <!-- Alternative Sidebar -->
+        <div id="sidebar-alt">
+            <!-- Wrapper for scrolling functionality -->
+            <div class="sidebar-scroll">
+                <!-- Sidebar Content -->
+
+                <!-- END Sidebar Content -->
+            </div>
+            <!-- END Wrapper for scrolling functionality -->
+        </div>
+        <!-- END Alternative Sidebar -->
+
+        <!-- Main Sidebar -->
+        <div id="sidebar">
+            <!-- Wrapper for scrolling functionality -->
+            <div class="sidebar-scroll">
+                <!-- Sidebar Content -->
+                <div class="sidebar-content">
+                    <!-- Brand -->
+                    <a href="index.html" class="sidebar-brand">
+                        <strong>DKWEBHOST</strong>
+                    </a>
+                    <!-- END Brand -->
+
+                    <!-- User Info -->
+                    <div class="sidebar-section sidebar-user clearfix">
+                        <div class="sidebar-user-avatar">
+                            <a href="#">
+                                <img src="img/2.jpg" alt="avatar">
+                            </a>
+                        </div>
+                        <div class="sidebar-user-name">Diendra</div>
+                        <div class="sidebar-user-links">
+                            <a href="https://www.facebook.com/spekcomun" data-toggle="tooltip" data-placement="bottom"
+                                nama_produk="Facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/diiendra/" data-toggle="tooltip" data-placement="bottom"
+                                nama_produk="Instagram"><i class="fa fa-instagram"></i></a>
+                            <!-- Opens the user settings modal that can be found at the bottom of each page (page_footer.html in PHP version) -->
+                            <a href="#modal-user" data-toggle="modal" class="enable-tooltip" nama_produk="Gmail"><i
+                                    class="fa fa-google"></i></a>
+                            <a href="#modal-user" data-toggle="modal" class="enable-tooltip" nama_produk="Phone"><i
+                                    class="fa fa-phone"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- END User Info -->
+
+
+                    <!-- Sidebar Navigation -->
+                    <ul class="sidebar-nav">
+
+
+
+                        <li> <a href="index.html"><i class="fa fa-pencil sidebar-nav-icon"></i>Insert</a>
+                        </li>
+                        <li> <a href="readjson.html" class=" active"><i
+                                    class="fa fa-scissors sidebar-nav-icon"></i>Edit</a>
+                        </li>
+
+
+
+
+
+                    </ul>
+                    <!-- END Sidebar Navigation -->
+
+                </div>
+                <!-- END Sidebar Content -->
+            </div>
+            <!-- END Wrapper for scrolling functionality -->
+        </div>
+        <!-- END Main Sidebar -->
+
+        <!-- Main Container -->
+        <div id="main-container">
+            <!-- Header -->
+            <!-- In the PHP version you can set the following options from inc/config file -->
+            <!--
+                    Available header.navbar classes:
+
+                    'navbar-default'            for the default light header
+                    'navbar-inverse'            for an alternative dark header
+
+                    'navbar-fixed-top'          for a top fixed header (fixed sidebars with scroll will be auto initialized, functionality can be found in js/app.js - handleSidebar())
+                        'header-fixed-top'      has to be added on #page-container only if the class 'navbar-fixed-top' was added
+
+                    'navbar-fixed-bottom'       for a bottom fixed header (fixed sidebars with scroll will be auto initialized, functionality can be found in js/app.js - handleSidebar()))
+                        'header-fixed-bottom'   has to be added on #page-container only if the class 'navbar-fixed-bottom' was added
+                -->
+            <header class="navbar navbar-default">
+                <!-- Left Header Navigation -->
+                <ul class="nav navbar-nav-custom">
+                    <!-- Main Sidebar Toggle Button -->
+                    <li>
+                        <a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');">
+                            <i class="fa fa-bars fa-fw"></i>
+                        </a>
+                    </li>
+                    <!-- END Main Sidebar Toggle Button -->
+
+                </ul>
+                <!-- END Left Header Navigation -->
+
+
+
+            </header>
+            <!-- END Header -->
+
+            <!-- Page content -->
+            <div id="page-content">
+                <!-- Animations Header -->
+
+
+                <!-- END Animations Header -->
+
+                <!-- Animate Page Block -->
+                <div class="widget">
+                    <div class="widget-extra themed-background-dark">
+
+                        <h3 class="widget-content-light">
+                            <strong>Read Json </strong>
+
+                        </h3>
+
+                        <legend class="text-center widget-content-light">Click ID Untuk Mengedit </legend>
+                    </div>
+
+                    <!-- Animate Page Content -->
+                    <ul class="list" id="output">z
+                    </ul>
+
+                </div>
+                <!-- END Animate Page Block -->
+
+            </div>
+            <!-- END Page Content -->
+
+            <!-- Footer -->
+            <footer class="clearfix">
+                <div class="pull-right">
+                    Crafted with <i class="fa fa-heart text-danger"></i> by <a href="#" target="_blank">Diendra</a>
+                </div>
+
+            </footer>
+            <!-- END Footer -->
+        </div>
+        <!-- END Main Container -->
+    </div>
+    <!-- END Page Container -->
+
+    <!-- Scroll to top link, initialized in js/app.js - scrollToTop() -->
+    <a href="#" id="to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <!-- User Settings, modal which opens from Settings link (found in top right user menu) and the Cog link (found in sidebar user info) -->
+
+    <!-- END User Settings -->
+    <div id="modal-user" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header text-center">
+                    <h2 class="modal-nama_produk"><i class="fa fa-pencil"></i> CONTACT ME</h2>
+                </div>
+                <!-- END Modal Header -->
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+
+                    <form action=" kontak/create" method="post" name="submit" id="submit"
+                        class="form-horizontal form-bordered submit">
+                        <fieldset>
+                            <legend>Diendra</legend>
+
+                            <div class="form-group control-group">
+
+                                <label class="col-md-4 control-label" for="form-field-1">Gmail : </label>
+                                <div class="col-md-8 controls">
+                                    <label class="col-md-4 control-label"
+                                        for="form-field-1">Diendra.lm@gmail.com</label>
+                                </div>
+                            </div>
+                            <div class="form-group control-group">
+                                <label class="col-md-4 control-label" for="form-field-1">NOMOR : </label>
+                                <div class="col-md-8 controls">
+
+                                    <label class="col-md-4 control-label" for="form-field-1">089618768626</label>
+                                </div>
+                            </div>
+
+
+                        </fieldset>
+                    </form>
+                </div>
+                <!-- END Modal Body -->
+            </div>
+        </div>
+    </div>
+    <!-- Include Jquery library from Google's CDN but if something goes wrong get Jquery from local file (Remove 'http:' if you have SSL) -->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        !window.jQuery && document.write(decodeURI(
+            '%3Cscript src="js/vendor/jquery-1.11.1.min.js"%3E%3C/script%3E'));
+    </script>
+
+    <!-- Bootstrap.js, Jquery plugins and Custom JS code -->
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Google Maps API + Gmaps Plugin, must be loaded in the page you would like to use maps (Remove 'http:' if you have SSL) -->
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="js/helpers/gmaps.min.js"></script>
+
+    <!-- Load and execute javascript code used only in this page -->
+    <script src="js/pages/index.js"></script>
+    <script>
+        $(function () {
+            Index.init();
+        });
+    </script>
+</body>
+
+</html>
