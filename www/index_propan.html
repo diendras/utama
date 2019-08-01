@@ -130,15 +130,15 @@
 
 
 
-                        <li> <a href="index.html" class=" active"><i class="fa fa-users sidebar-nav-icon"></i>Dulux</a>
+                        <li> <a href="index.html"><i class="fa fa-users sidebar-nav-icon"></i>Dashboard</a>
+                        </li>
+                        <li> <a href="index_catylac.html"><i class="fa fa-users sidebar-nav-icon"></i>Stock</a>
                         </li>
                         <li> <a href="index_propan.html" class=" active"><i
-                                    class="fa fa-users sidebar-nav-icon"></i>Propan</a>
+                                    class="fa fa-users sidebar-nav-icon"></i>Barang Masuk</a>
                         </li>
-                        <li> <a href="index_indomaco.html" class=" active"><i
-                                    class="fa fa-users sidebar-nav-icon"></i>Indomaco</a>
+                        <li> <a href="index_indomaco.html"><i class="fa fa-users sidebar-nav-icon"></i>Barang Keluar</a>
                         </li>
-
 
 
 
@@ -235,13 +235,9 @@
                                         style="width: 249px;">stok</th>
                                     <th class="sorting center" tabindex="0" aria-controls="tabel_produk" rowspan="1"
                                         colspan="1" aria-label="Platform(s): activate to sort column ascending"
-                                        style="width: 249px;">harga</th>
-                                    <th class="sorting center" tabindex="0" aria-controls="tabel_produk" rowspan="1"
-                                        colspan="1" aria-label="Platform(s): activate to sort column ascending"
-                                        style="width: 249px;">nomor</th>
-                                    <th class="sorting center" tabindex="0" aria-controls="tabel_produk" rowspan="1"
-                                        colspan="1" aria-label="Platform(s): activate to sort column ascending"
-                                        style="width: 249px;">Keterangan</th>
+                                        style="width: 249px;">Jumlah Barang Masuk</th>
+
+
 
                                 </tr>
                             </thead>
@@ -326,28 +322,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="nomor">nomor <span
-                                                    class="text-danger">*</span></label>
-                                            <div class="col-md-6">
-                                                <div class="input-group">
-                                                    <input type="text" id="nomor" name="nomor" class="form-control"
-                                                        placeholder="nomor">
-                                                    <span class="input-group-addon"><i class="gi gi-money"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="keterangan">Keterangan <span
-                                                    class="text-danger">*</span></label>
-                                            <div class="col-md-6">
-                                                <div class="input-group">
-                                                    <input type="text" id="keterangan" name="keterangan"
-                                                        class="form-control" placeholder="keterangan">
-                                                    <span class="input-group-addon"><i class="gi gi-notes_2"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
+
+
                                         <legend>Pastikan lagi Data yang di tambahkan sudah Benar </legend>
 
                                         <div class="form-group form-actions">
@@ -460,7 +436,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            var url = "https://diendrakur.000webhostapp.com/restandro-master/json_propan.php";
+            var url = "http://dresslogic.id/stok/json_produk.php";
             $.getJSON(url, function (result) {
                 console.log(result);
                 $.each(result, function (i, field) {
@@ -472,6 +448,7 @@
                     var jenis = field.jenis;
                     var nomor = field.nomor;
                     var keterangan = field.keterangan;
+                    var qty = field.qty;
 
                     $("#output1").append(
                         " <tr><td ><a class='item' href='form_propan.html?id=" +
@@ -480,9 +457,7 @@
                         stok + "&jenis=" + jenis + "&nomor=" + nomor + "&keterangan=" +
                         keterangan + "'>" +
                         nama + "</a></td><td>  " + jenis +
-                        "</td> <td> " + stok + "</td><td> RP. " + harga + "</td><td>" +
-                        nomor + "</td><td>" +
-                        keterangan + "</td></tr>");
+                        "</td> <td> " + stok + "</td> <td> " + qty + "</td></tr>");
 
                 });
 
@@ -520,7 +495,7 @@
                     .length > 0) {
                     $.ajax({
                         type: "POST",
-                        url: "https://diendrakur.000webhostapp.com/restandro-master/insert_propan.php",
+                        url: "http://dresslogic.id/stok/insert_produk.php",
                         data: dataString,
                         crossDomain: true,
                         cache: false,
@@ -532,7 +507,7 @@
                                 alert("Data Berhasil Ditambah");
                                 $("#submit").val('submit');
 
-                                window.location = "index_propan.html";
+                                window.location = "index.html";
                             } else if (data == "error") {
                                 alert("error");
                             }
