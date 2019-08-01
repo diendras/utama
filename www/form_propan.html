@@ -52,21 +52,24 @@
             $("#update").click(function () {
                 var id = $("#id").val();
                 var nama = $("#nama").val();
-
+                var minus = 1;
                 var harga = $("#harga").val();
                 var stok = $("#stok").val();
                 var jenis = $("#jenis").val();
                 var nomor = $("#nomor").val();
                 var keterangan = $("#keterangan").val();
+                
+                stok = stok - minus;
 
                 var dataString = "&id=" + id + "&nama=" +
                     nama + "&harga=" +
-                    harga + "&stok=" + stok + "&jenis=" + jenis + "&nomor=" + nomor + "&keterangan=" +
+                    harga + "&stok=" + stok + "&jenis=" + jenis + "&nomor=" + nomor +
+                    "&keterangan=" +
                     keterangan +
                     "&update=";
                 $.ajax({
                     type: "POST",
-                    url: "https://diendrakur.000webhostapp.com/restandro-master/update_propan.php",
+                    url: "http://dresslogic.id/stok/stok.php",
                     data: dataString,
                     crossDomain: true,
                     cache: false,
@@ -316,87 +319,16 @@
 
 
                     <fieldset>
-                        <legend>Edit Data</legend>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="id">ID Produk <span
-                                    class="text-danger">*</span></label>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <input type="text" id="id" name="id" class="form-control" placeholder="id">
-                                    <span class="input-group-addon"><i class="fa fa-paw"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="nama">Nama Produk <span
-                                    class="text-danger">*</span></label>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <input type="text" id="nama" name="nama" class="form-control"
-                                        placeholder="Nama produk">
-                                    <span class="input-group-addon"><i class="gi gi-nameplate_alt"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="harga">harga <span
-                                    class="text-danger">*</span></label>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <input type="text" id="harga" name="harga" class="form-control"
-                                        placeholder="Barang/Jasa">
-                                    <span class="input-group-addon"><i class="gi gi-cleaning"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="stok">stok <span
-                                    class="text-danger">*</span></label>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <input type="text" id="stok" name="stok" class="form-control" placeholder="stok">
-                                    <span class="input-group-addon"><i class="gi gi-money"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="jenis">jenis <span
-                                    class="text-danger">*</span></label>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <input type="text" id="jenis" name="jenis" class="form-control" placeholder="jenis">
-                                    <span class="input-group-addon"><i class="gi gi-shopping_bag"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="nomor">jenis <span
-                                    class="text-danger">*</span></label>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <input type="text" id="nomor" name="nomor" class="form-control" placeholder="nomor">
-                                    <span class="input-group-addon"><i class="gi gi-shopping_bag"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="keterangan">Keterangan <span
-                                    class="text-danger">*</span></label>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <input type="text" id="keterangan" name="keterangan" class="form-control"
-                                        placeholder="keterangan">
-                                    <span class="input-group-addon"><i class="gi gi-notes_2"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <legend>Pastikan lagi Data yang di edit sudah Benar </legend>
+
+                        <legend>apakah anda ingin mengurangi stok? </legend>
 
                         <div class="form-group form-actions">
                             <div class="col-xs-12 text-right">
 
-                                <a class="mb-xs mt-xs mr-xs  btn btn-primary" href="#modal-edit" data-toggle="modal"
-                                    class="enable-tooltip"> Simpan</a>
+                                <a class="mb-xs mt-xs mr-xs  btn btn-warning" href="#modal-edit" data-toggle="modal"
+                                    class="enable-tooltip"> keluar</a>
+                                <a class="mb-xs mt-xs mr-xs  btn btn-succes" href="#modal-edit" data-toggle="modal"
+                                    class="enable-tooltip"> masuk</a>
 
                                 <a href="index.html"> <button type="button"
                                         onClick="return confirm('Anda yakin ingin membatalkan perubahan data?')"
