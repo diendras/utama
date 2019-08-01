@@ -23,6 +23,7 @@
 
     <!-- The themes stylesheet of this template (for using specific theme color in individual elements - must included last) -->
     <link rel="stylesheet" href="css/themes.css">
+
     <link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
 
     <link rel="stylesheet" href="css/dataTables.bootstrap.css">
@@ -32,6 +33,8 @@
     <script src="js/vendor/modernizr-2.7.1-respond-1.4.2.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <script type="text/javascript" src="js/geturi.js"></script>
+
+    <script type="text/javascript" src="js/Chart.js"></script>
 
 </head>
 
@@ -129,12 +132,14 @@
 
 
 
-
-                        <li> <a href="index.html" class=" active"><i class="fa fa-users sidebar-nav-icon"></i>Dulux</a>
+                        <li> <a href="index.html" class=" active"><i
+                                    class="fa fa-users sidebar-nav-icon"></i>Dashboard</a>
                         </li>
-                        <li> <a href="index_propan.html" class=" active"><i class="fa fa-users sidebar-nav-icon"></i>Propan</a>
+                        <li> <a href="index_catylac.html"><i class="fa fa-users sidebar-nav-icon"></i>Stock</a>
                         </li>
-                        <li> <a href="index_indomaco.html" class=" active"><i class="fa fa-users sidebar-nav-icon"></i>Indomaco</a>
+                        <li> <a href="index_propan.html"><i class="fa fa-users sidebar-nav-icon"></i>Barang Masuk</a>
+                        </li>
+                        <li> <a href="index_indomaco.html"><i class="fa fa-users sidebar-nav-icon"></i>Barang Keluar</a>
                         </li>
 
 
@@ -153,6 +158,7 @@
 
         <!-- Main Container -->
         <div id="main-container">
+
             <!-- Header -->
             <!-- In the PHP version you can set the following options from inc/config file -->
             <!--
@@ -198,181 +204,63 @@
                     <div class="widget-extra themed-background-dark">
 
                         <h3 class="widget-content-light">
-                            <strong>Data Produk </strong>
+                            <strong>Statistik Barang </strong>
 
                         </h3>
 
-                        <legend class="text-center widget-content-light">Click ID Untuk Mengedit </legend>
+
                     </div>
                     <div class="row pul">
                         <div class="col-md-12">
-                            <div class="mb-md pull-right">
-                                <a class="mb-xs mt-xs mr-xs  btn btn-success" href="#modal-tambah" data-toggle="modal"
-                                    class="enable-tooltip">Tambah <i class="hi hi-edit"></i></a>
+                            <div style="width: 500px;height: 500px">
+                                <canvas id="myChart"></canvas>
                             </div>
+
+
+                            <script>
+                                var ctx = document.getElementById("myChart").getContext('2d');
+                                var myChart = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: ["DULUX", "PROPAN", "INDACO", "JOTUN", "SPECTRUM", "MOWILEX"],
+                                        datasets: [{
+                                            label: 'Data Jumlah Barang',
+                                            data: [12, 19, 3, 23, 2, 3],
+                                            backgroundColor: [
+                                                'rgba(255, 99, 132, 0.2)',
+                                                'rgba(54, 162, 235, 0.2)',
+                                                'rgba(255, 206, 86, 0.2)',
+                                                'rgba(75, 192, 192, 0.2)',
+                                                'rgba(153, 102, 255, 0.2)',
+                                                'rgba(255, 159, 64, 0.2)'
+                                            ],
+                                            borderColor: [
+                                                'rgba(255,99,132,1)',
+                                                'rgba(54, 162, 235, 1)',
+                                                'rgba(255, 206, 86, 1)',
+                                                'rgba(75, 192, 192, 1)',
+                                                'rgba(153, 102, 255, 1)',
+                                                'rgba(255, 159, 64, 1)'
+                                            ],
+                                            borderWidth: 1
+                                        }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            yAxes: [{
+                                                ticks: {
+                                                    beginAtZero: true
+                                                }
+                                            }]
+                                        }
+                                    }
+                                });
+                            </script>
                         </div>
-                    </div>
-                    <!-- Animate Page Content -->
-                    <div class="table-responsive">
-
-
-                        <table id="tabel_produk"
-                            class="table table-vcenter table-condensed table-bordered dataTable no-footer" role="grid"
-                            aria-describedby="tabel_produk_info">
-                            <thead class="center">
-                                <tr role="row">
-
-                                    <th class="sorting center" tabindex="0" aria-controls="tabel_produk" rowspan="1"
-                                        colspan="1" aria-label="Platform(s): activate to sort column ascending"
-                                        style="width: 249px;">Nama Produk</th>
-                                    <th class="sorting center" tabindex="0" aria-controls="tabel_produk" rowspan="1"
-                                        colspan="1" aria-label="Platform(s): activate to sort column ascending"
-                                        style="width: 249px;">jenis</th>
-                                    <th class="sorting center" tabindex="0" aria-controls="tabel_produk" rowspan="1"
-                                        colspan="1" aria-label="Platform(s): activate to sort column ascending"
-                                        style="width: 249px;">stok</th>
-                                    <th class="sorting center" tabindex="0" aria-controls="tabel_produk" rowspan="1"
-                                        colspan="1" aria-label="Platform(s): activate to sort column ascending"
-                                        style="width: 249px;">harga</th>
-                                    <th class="sorting center" tabindex="0" aria-controls="tabel_produk" rowspan="1"
-                                        colspan="1" aria-label="Platform(s): activate to sort column ascending"
-                                        style="width: 249px;">nomor</th>
-                                    <th class="sorting center" tabindex="0" aria-controls="tabel_produk" rowspan="1"
-                                        colspan="1" aria-label="Platform(s): activate to sort column ascending"
-                                        style="width: 249px;">Keterangan</th>
-
-                                </tr>
-                            </thead>
-                            <tbody class="center" id="output1">
-
-
-
-
-
-
-
-                            </tbody>
-
-                        </table>
-
-
                     </div>
 
                 </div>
-                <!-- END Animate Page Block -->
-                <div id="modal-tambah" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <!-- Modal Header -->
-                            <div class="modal-header text-center">
-                                <h2 class="modal-name"><b>Tambah Data</b></h2>
-                            </div>
-                            <!-- END Modal Header -->
 
-                            <!-- Modal Body -->
-                            <div class="modal-body">
-
-                                <form id="my-form">
-
-
-                                    <fieldset>
-                                        <legend> Masukan Data Dengan Benar</legend>
-
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="nama">Nama Produk <span
-                                                    class="text-danger">*</span></label>
-                                            <div class="col-md-6">
-                                                <div class="input-group">
-                                                    <input type="text" id="nama" name="nama" class="form-control"
-                                                        placeholder="Nama produk">
-                                                    <span class="input-group-addon"><i
-                                                            class="gi gi-nameplate_alt"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="harga">harga <span
-                                                    class="text-danger">*</span></label>
-                                            <div class="col-md-6">
-                                                <div class="input-group">
-                                                    <input type="text" id="harga" name="harga" class="form-control"
-                                                        placeholder="Barang/Jasa">
-                                                    <span class="input-group-addon"><i
-                                                            class="gi gi-cleaning"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="stok">stok <span
-                                                    class="text-danger">*</span></label>
-                                            <div class="col-md-6">
-                                                <div class="input-group">
-                                                    <input type="text" id="stok" name="stok" class="form-control"
-                                                        placeholder="stok">
-                                                    <span class="input-group-addon"><i class="gi gi-money"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="jenis">jenis <span
-                                                    class="text-danger">*</span></label>
-                                            <div class="col-md-6">
-                                                <div class="input-group">
-                                                    <input type="text" id="jenis" name="jenis" class="form-control"
-                                                        placeholder="jenis">
-                                                    <span class="input-group-addon"><i class="gi gi-money"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="nomor">nomor <span
-                                                    class="text-danger">*</span></label>
-                                            <div class="col-md-6">
-                                                <div class="input-group">
-                                                    <input type="text" id="nomor" name="nomor" class="form-control"
-                                                        placeholder="nomor">
-                                                    <span class="input-group-addon"><i class="gi gi-money"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="keterangan">Keterangan <span
-                                                    class="text-danger">*</span></label>
-                                            <div class="col-md-6">
-                                                <div class="input-group">
-                                                    <input type="text" id="keterangan" name="keterangan"
-                                                        class="form-control" placeholder="keterangan">
-                                                    <span class="input-group-addon"><i class="gi gi-notes_2"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <legend>Pastikan lagi Data yang di tambahkan sudah Benar </legend>
-
-                                        <div class="form-group form-actions">
-                                            <div class="col-xs-12 text-right">
-
-                                                <button onClick="return confirm('Anda yakin ingin menambahkan data?')"
-                                                    type="submit" id="submit" name="submit"
-                                                    class="btn btn-sm btn-primary">
-                                                    <i class="fa fa-floppy-o"> simpan</i></button>
-
-                                                <button type="button" data-toggle="tooltip"
-                                                    class="btn btn-sm btn-default" data-dismiss="modal"><i
-                                                        class="fa fa-trash-o"> Batal</i></button>
-
-                                            </div>
-                                        </div>
-
-
-                                    </fieldset>
-
-                                </form>
-
-                            </div>
-                            <!-- END Modal Body -->
-                        </div>
-                    </div>
-                </div>
             </div>
             <!-- END Page Content -->
 
@@ -432,6 +320,7 @@
                         </fieldset>
                     </form>
                 </div>
+
                 <!-- END Modal Body -->
             </div>
         </div>
@@ -483,6 +372,8 @@
                         keterangan + "</td></tr>");
 
                 });
+
+
 
                 $('#tabel_produk').DataTable();
 
